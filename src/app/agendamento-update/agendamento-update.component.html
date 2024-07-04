@@ -1,0 +1,34 @@
+<div class="container">
+    <mat-card>
+      <h2>Atualizar Agendamento</h2>
+  
+      <div>
+        <form [formGroup]="agendamentoForm" (ngSubmit)="onUpdateAgendamento()">
+          <mat-form-field appearance="fill">
+            <mat-label>Data de Agendamento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="data_agendamento" placeholder="Escolha a data de agendamento">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field appearance="fill">
+            <mat-label>Código Local</mat-label>
+            <input matInput formControlName="codigo_local" placeholder="Enter Local Code">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>CPF Supervisor</mat-label>
+            <input matInput formControlName="cpf_supervisor" placeholder="Enter Supervisor CPF">
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Paciente CPF</mat-label>
+            <input matInput formControlName="paciente_cpf" placeholder="Enter Paciente CPF">
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit">Atualizar</button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,85 @@
+<mat-card class="procedimentos-card">
+  <h2 class="card-title">Lista de Procedimentos</h2>
+
+  <button mat-raised-button color="primary" (click)="toggleAddProcedureForm()" class="add-button">
+    Adicionar Procedimento
+  </button>
+
+  <div *ngIf="showAddProcedureForm" class="add-procedure-form">
+    <form [formGroup]="procedureForm" (ngSubmit)="onAddProcedure()" class="form">
+      <h3>Adicionar Procedimento</h3>
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" placeholder="Enter procedure name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Tipo de Procedimento</mat-label>
+          <mat-select formControlName="tipo_procedimento">
+            <mat-option value="1">Exame</mat-option>
+            <mat-option value="2">Consulta</mat-option>
+            <mat-option value="3">Procedimento</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="codigo" placeholder="Enter procedure code">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit" class="submit-button">Adicionar</button>
+    </form>
+  </div>
+
+  <div *ngIf="showUpdateProcedureForm" class="update-procedure-form">
+    <form [formGroup]="procedureForm" (ngSubmit)="onUpdateProcedure()" class="form">
+      <h3>Atualizar Procedimento</h3>
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" placeholder="Enter procedure name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Tipo de Procedimento</mat-label>
+          <mat-select formControlName="tipo_procedimento">
+            <mat-option value="1">Exame</mat-option>
+            <mat-option value="2">Consulta</mat-option>
+            <mat-option value="3">Procedimento</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="codigo" placeholder="Enter procedure code">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit" class="submit-button">Atualizar</button>
+    </form>
+  </div>
+
+  <div *ngIf="fetched" class="procedimentos-list">
+    <!-- <h1 class="h1">Listagem de Procedimentos</h1> -->
+    <ul>
+      <li *ngFor="let procedimento of procedimentos" class="procedimento-item">
+        <span class="procedimento-info">
+          <strong>Nome:</strong> {{ procedimento.nome }} <br>
+          <strong>Tipo de Procedimento:</strong> {{ getTipoProcedimentoLabel(+procedimento.tipo_procedimento) }} <br>
+          <strong>Código:</strong> {{ procedimento.codigo }}
+        </span>
+        <div class="procedimento-buttons">
+          <button mat-raised-button color="basic" (click)="showRequerimentos(procedimento.id)" class="detail-button">
+            Fila de espera
+          </button>
+          <button mat-raised-button color="accent" (click)="openUpdateProcedureForm(procedimento)" class="update-button">
+            Atualizar
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteProcedure(procedimento.id)" class="delete-button">
+            Deletar
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="!fetched" class="loading-message">
+    <p>Carregando procedimentos...</p>
+  </div>
+</mat-card>

@@ -1,0 +1,38 @@
+.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #007bff; /*333333*/
+}
+
+.topnav li {
+  float: left;
+}
+
+.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav li a:hover:not(.active) {
+  background-color: #005d36;
+}
+
+.topnav li a.active {
+  background-color: #04aa6d;
+}
+
+.topnav li.right {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav li.right,
+  .topnav li {
+    float: none;
+  }
+}

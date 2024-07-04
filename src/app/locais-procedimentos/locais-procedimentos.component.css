@@ -1,0 +1,45 @@
+.container {
+    background-color: #4CAF50; /* Green */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: rgb(9, 9, 9); /* Text color */
+    margin-bottom: 20px;
+  }
+  
+  .locais-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .local-item {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: black; /* Change text color to black */
+  }
+  
+  .local-item strong {
+    color: black; /* Change strong text color to black */
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  .form-container {
+    margin-top: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  

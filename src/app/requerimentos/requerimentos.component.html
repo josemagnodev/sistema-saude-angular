@@ -1,0 +1,102 @@
+<mat-card>
+  <div *ngIf="procedimentoId">
+    <h2 class="card-title">Fila de espera para o Procedimento {{ procedimentoId }}</h2>
+  </div>
+  <div *ngIf="!procedimentoId">
+    <h2 class="card-title">Fila de espera</h2>
+  </div>
+
+  <button mat-raised-button color="accent" (click)="toggleAddRequerimentoForm()">
+    Adicionar a Fila de espera
+  </button>
+
+  <div *ngIf="showAddRequerimentoForm">
+    <form [formGroup]="requerimentoForm" (ngSubmit)="saveRequerimento()">
+      <h2>{{ currentRequerimentoId ? 'Atualizar Requerimento' : 'Adicionar Requerimento' }}</h2>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nome do pedido</mat-label>
+        <input matInput formControlName="nome_requerimento" placeholder="Enter requerimento name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CPF Paciente</mat-label>
+        <input matInput formControlName="cpf_paciente" placeholder="Enter patient's CPF">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Procedimento Código</mat-label>
+        <select matNativeControl formControlName="procedimento_codigo">
+          <option *ngFor="let procedimento of procedimentosCadastrados" [value]="procedimento.codigo">
+            {{ procedimento.nome }}
+          </option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CPF Manager</mat-label>
+        <input matInput formControlName="cpf_manager" placeholder="Enter manager's CPF">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <input matInput formControlName="status" placeholder="Enter status">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Local Origem Código</mat-label>
+        <input matInput formControlName="local_origem_codigo" placeholder="Enter origin location code">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nível Urgência</mat-label>
+        <mat-select formControlName="nivel_urgencia">
+          <mat-option *ngFor="let key of objectKeys(nivelUrgenciaMap)" [value]="nivelUrgenciaMap[key]">
+            {{ key }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">
+        {{ currentRequerimentoId ? 'Atualizar' : 'Adicionar' }}
+      </button>
+    </form>
+  </div>
+
+  <div *ngIf="fetched">
+  
+
+    <div *ngIf="requerimentosFrom.length > 0" class="requerimentos-container">
+      <div *ngFor="let requerimento of requerimentosFrom" class="requerimento-item">
+        <strong>Nome Requerimento:</strong> {{ requerimento.nome_requerimento }} <br>
+        <strong>CPF Paciente:</strong> {{ requerimento.cpf_paciente }} <br>
+        <!-- <strong>Nome Paciente:</strong> {{ pacientes[requerimento.cpf_paciente]?.nome || 'Carregando...' }} <br> -->
+        <strong>Procedimento Código:</strong> {{ requerimento.procedimento_codigo }} <br>
+        <!-- <strong>Nome Procedimento:</strong> {{ procedimentos[requerimento.procedimento_codigo]?.nome || 'Carregando...' }} <br> -->
+        <strong>CPF Supervisor:</strong> {{ requerimento.cpf_manager }} <br>
+        <strong>Status:</strong> {{ requerimento.status }} <br>
+        <strong>Local Origem Código:</strong> {{ requerimento.local_origem_codigo }} <br>
+        <strong>Nível Urgência:</strong> {{ requerimento.nivel_urgencia }} <br>
+        <button mat-raised-button class="agendar-button" *ngIf="requerimento.status === 1 || requerimento.status === 2"
+          (click)="redirectToAgendamentos(requerimento.id)">
+          Agendar
+        </button>
+        <button mat-raised-button class="deletar-button" (click)="deleteRequerimento(requerimento.id)">
+          Deletar
+        </button>
+        <button mat-raised-button class="atualizar-button" (click)="editRequerimento(requerimento)">
+          Atualizar
+        </button>
+      </div>
+    </div>
+    
+
+    <div *ngIf="requerimentosFrom.length === 0">
+      <p>Nenhum requerimento encontrado para este procedimento.</p>
+    </div>
+  </div>
+
+  <div *ngIf="!fetched">
+    <p>Loading requerimentos...</p>
+  </div>
+</mat-card>

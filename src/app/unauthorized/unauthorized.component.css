@@ -1,0 +1,12 @@
+.unauthorized-message {
+    color: red;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px solid red;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+  }
+  

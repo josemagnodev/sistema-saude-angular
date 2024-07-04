@@ -1,0 +1,13 @@
+<header class="navbar navbar-expand-lg" [ngClass]="'navbar-dark bg-primary'" *ngIf="shouldDisplayNavbar()">
+  <ul class="topnav">
+    <li><a routerLink="/home" class="module">Home</a></li>
+    <li><a routerLink="/pacientes" class="module">Pacientes</a></li>
+    <li><a routerLink="/procedimentos" class="module">Procedimentos</a></li>
+    <li><a routerLink="/requerimentos" class="module">Fila de Espera</a></li>
+    <li><a routerLink="/agendamentos" class="module">Agendamentos</a></li>
+    <li><a routerLink="/locais" class="module">Locais de Procedimentos</a></li>
+    <li><a routerLink="/locais-psf" class="module">PSF</a></li>
+    <li><a routerLink="/locais-psf" class="module">Farmacia</a></li>
+    <li><a routerLink="/logout" class="module">Sair</a></li>
+  </ul>
+</header>

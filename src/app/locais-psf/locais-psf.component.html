@@ -1,0 +1,64 @@
+<mat-card>
+    <h2>Lista de Locais de PSF</h2>
+  
+    <button mat-raised-button color="accent" (click)="toggleAddLocalForm()">
+      Adicionar Local de PSF
+    </button>
+  
+    <div *ngIf="showAddLocalForm">
+      <form [formGroup]="localForm" (ngSubmit)="onAddLocal()">
+        <h2>Adicionar Local de PSF</h2>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" placeholder="Informe o nome do local">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="codigo" placeholder="Informe o código do local">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Endereço</mat-label>
+          <input matInput formControlName="endereco" placeholder="Informe o endereço">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Cidade</mat-label>
+          <input matInput formControlName="cidade" placeholder="Informe a cidade">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" placeholder="Informe o estado">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input matInput formControlName="telefone" placeholder="Informe o telefone">
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit">Adicionar</button>
+      </form>
+    </div>
+  
+    <div *ngIf="fetched">
+      <h2>List of Locais de PSF</h2>
+      <ul>
+        <li *ngFor="let local of locaisProcedimentos">
+          <strong>Nome:</strong> {{ local.nome }} <br>
+          <strong>Código:</strong> {{ local.codigo }} <br>
+          <strong>Endereço:</strong> {{ local.endereco }} <br>
+          <strong>Cidade:</strong> {{ local.cidade }} <br>
+          <strong>Estado:</strong> {{ local.estado }} <br>
+          <strong>Telefone:</strong> {{ local.telefone }}
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="!fetched">
+      <p>Loading locais de PSF...</p>
+    </div>
+  </mat-card>
+  

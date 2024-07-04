@@ -1,0 +1,70 @@
+.pacientes-card {
+  padding: 20px;
+}
+
+.search-form-field {
+  display: flex;
+  align-items: center;
+}
+
+.search-form-field button {
+  margin-left: 10px;
+}
+.card-title{
+  font-size: 2.5rem;
+  color: #007bff;
+}
+
+.add-button {
+  width: 15rem;
+  height: 2.5rem;
+  margin: 10px 0;
+  /* align-self: flex-start; */
+}
+
+.add-patient-form, .update-patient-form {
+  margin: 20px 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  flex: 1;
+}
+
+.submit-button {
+  margin-top: 10px;
+}
+
+.pacientes-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+.paciente-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.paciente-info {
+  flex: 1;
+  font-size: 1.5rem;
+}
+
+.paciente-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.loading-message {
+  margin-top: 20px;
+}

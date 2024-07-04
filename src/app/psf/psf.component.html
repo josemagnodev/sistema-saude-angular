@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>PSF Management</h1>
+  
+    <!-- Form to Create/Update PSF -->
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" [(ngModel)]="psf.name" name="name" required>
+      </div>
+      <div>
+        <label for="code">Code</label>
+        <input type="text" id="code" [(ngModel)]="psf.code" name="code" required>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  
+    <!-- Display PSFs -->
+    <ul>
+      <li *ngFor="let psf of psfs">
+        {{ psf.name }} ({{ psf.code }})
+        <button (click)="editPsf(psf)">Edit</button>
+        <button (click)="deletePsf(psf.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  

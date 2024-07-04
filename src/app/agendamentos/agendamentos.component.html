@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-card *ngIf="showAddForm" class="add-agendamento-form">
+    <h2 class="card-title">Adicionar Agendamento para o Requerimento ID: {{ requerimentoId }}</h2>
+
+    <form [formGroup]="agendamentoForm" (ngSubmit)="onAddAgendamento()" class="form">
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Data de Agendamento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="data_agendamento" placeholder="Escolha a data de agendamento">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Código Local</mat-label>
+          <input matInput formControlName="codigo_local" placeholder="Enter Local Code">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>CPF Supervisor</mat-label>
+          <input matInput formControlName="cpf_supervisor" placeholder="Enter Supervisor CPF">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Paciente CPF</mat-label>
+          <input matInput formControlName="paciente_cpf" placeholder="Enter Paciente CPF">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit" class="submit-button">Adicionar</button>
+    </form>
+  </mat-card>
+
+  <mat-card *ngIf="fetched" class="agendamentos-card">
+    <h2 class="card-title">Todos os Agendamentos</h2>
+    <div class="agendamentos-list">
+      <div *ngFor="let agendamento of agendamentosFrom" class="agendamento-item">
+        <div class="agendamento-info">
+          <strong>Data de Agendamento:</strong> {{ agendamento.data_agendamento | date }} <br>
+          <strong>Código Local:</strong> {{ agendamento.codigo_local }} <br>
+          <strong>CPF Supervisor:</strong> {{ agendamento.cpf_supervisor }} <br>
+          <strong>Paciente CPF:</strong> {{ agendamento.paciente_cpf }} <br>
+        </div>
+        <div class="agendamento-buttons">
+          <button mat-raised-button color="accent" (click)="navigateToUpdate(agendamento.id)" class="update-button">Atualizar</button>
+          <button mat-raised-button color="warn" (click)="onDeleteAgendamento(agendamento.id)" class="delete-button">Deletar</button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card *ngIf="!fetched">
+    <p>Carregando agendamentos...</p>
+  </mat-card>
+</div>

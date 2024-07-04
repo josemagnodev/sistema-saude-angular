@@ -1,0 +1,23 @@
+/* styles.scss */
+
+
+
+/* Apply colors to body or container */
+body {
+  background-color: #fffced ;/* Dark Purple */
+  color: #ffffff; /* Text color */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #00d36a; /* Green */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

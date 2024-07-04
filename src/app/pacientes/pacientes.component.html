@@ -1,0 +1,107 @@
+<mat-card class="pacientes-card">
+  <h2 class="card-title">Lista de Pacientes</h2>
+
+  <mat-form-field appearance="fill" class="search-form-field">
+    <mat-label>Buscar por CPF</mat-label>
+    <input matInput [(ngModel)]="cpfBuscar" placeholder="Enter CPF">
+    <button mat-raised-button color="primary" (click)="buscarPacientePorCPF()">Buscar</button>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" (click)="toggleAddPatientForm()" class="add-button">
+    Adicionar Paciente
+  </button>
+
+  <div *ngIf="showAddPatientForm" class="add-patient-form">
+    <form [formGroup]="patientForm" (ngSubmit)="onAddPatient()">
+      <h3>Adicionar Paciente</h3>
+
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="name" placeholder="Enter patient's name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>CPF</mat-label>
+          <input matInput formControlName="cpf" placeholder="Enter patient's CPF">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>CNS</mat-label>
+          <input matInput formControlName="cns" placeholder="Enter patient's CNS">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>NIS</mat-label>
+          <input matInput formControlName="nis" placeholder="Enter patient's NIS">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>PSF Code</mat-label>
+          <input matInput formControlName="psf_code" placeholder="Enter patient's PSF Code">
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" class="submit-button">Adicionar</button>
+    </form>
+  </div>
+
+  <div *ngIf="showUpdatePatientForm" class="update-patient-form">
+    <form [formGroup]="patientForm" (ngSubmit)="onUpdatePatient()">
+      <h3>Atualizar Paciente</h3>
+
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="nome" placeholder="Enter patient's name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>CPF</mat-label>
+          <input matInput formControlName="cpf" placeholder="Enter patient's CPF">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>CNS</mat-label>
+          <input matInput formControlName="cns" placeholder="Enter patient's CNS">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>NIS</mat-label>
+          <input matInput formControlName="nis" placeholder="Enter patient's NIS">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>PSF Code</mat-label>
+          <input matInput formControlName="psf_code" placeholder="Enter patient's PSF Code">
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" class="submit-button">Atualizar</button>
+    </form>
+  </div>
+
+  <div *ngIf="fetched" class="pacientes-list">
+    <h3>Pacientes:</h3>
+    <ul>
+      <li *ngFor="let paciente of pacientes" class="paciente-item">
+        <span class="paciente-info">{{ paciente.name }} - CPF: {{ paciente.cpf }} - CNS: {{ paciente.cns }} - NIS: {{ paciente.nis }} - PSF Code: {{ paciente.psf_code }}</span>
+        <div class="paciente-buttons">
+          <button mat-raised-button color="basic" (click)="openUpdatePatientForm(paciente)" class="detail-button">
+            Detalhes
+          </button>
+          <button mat-raised-button color="accent" (click)="openUpdatePatientForm(paciente)" class="update-button">
+            Atualizar
+          </button>
+          <button mat-raised-button color="warn" (click)="deletePatient(paciente.id)" class="delete-button">
+            Deletar
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="!fetched" class="loading-message">
+    <p>Carregando pacientes...</p>
+  </div>
+</mat-card>

@@ -1,0 +1,32 @@
+<mat-card>
+  <div class="title-bar">
+    <p class="title-text">Sistema de Agendamento e Farmácia</p>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="profile-container">
+      <div class="profile-icon"></div>
+      <p class="login-text">Login</p>
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Enter your email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Enter your password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+      <span *ngIf="loading; else loginText">Carregando...</span>
+      <ng-template #loginText>Entrar</ng-template>
+    </button>
+    <button mat-raised-button color="accent" class="register-button" (click)="navigateToRegister()" [disabled]="loading">Registrar-se</button>
+  </form>
+
+  <div *ngIf="loading" class="">
+    <h3>Carregando...</h3>
+  </div>
+</mat-card>

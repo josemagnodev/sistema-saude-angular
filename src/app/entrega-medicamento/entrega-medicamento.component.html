@@ -1,0 +1,53 @@
+<mat-card>
+  <div class="title-bar">
+    <p class="title-text">Entrega de Medicação</p>
+  </div>
+
+  <form [formGroup]="entregaForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>CPF do Paciente</mat-label>
+      <input matInput formControlName="paciente_cpf" type="text" placeholder="Digite o CPF do paciente">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Código da Farmácia</mat-label>
+      <input matInput formControlName="farmacia_code" type="text" placeholder="Digite o código da farmácia">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Entregar Medicação</button>
+  </form>
+
+  <!-- Mensagem de erro -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Mensagem de sucesso -->
+  <div *ngIf="successMessage" class="success">
+    {{ successMessage }}
+  </div>
+
+  <!-- Campos para adicionar medicamentos -->
+  <div *ngIf="showMedicamentos">
+    <h3>Adicionar Medicamentos</h3>
+    <form [formGroup]="medicamentoForm" (ngSubmit)="onSubmitMedicamento()">
+      <div formArrayName="medicamentos">
+        <div *ngFor="let medicamento of medicamentos().controls; let i = index" [formGroupName]="i" class="medicamento-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Medicamento {{ i + 1 }}</mat-label>
+            <input matInput formControlName="nome" type="text" placeholder="Digite o nome do medicamento">
+          </mat-form-field>
+          <button mat-icon-button color="warn" (click)="removeMedicamento(i)" *ngIf="medicamentos().length > 1">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <button mat-icon-button color="primary" (click)="addMedicamento()" type="button">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <button mat-raised-button color="primary" type="submit">Salvar Medicamentos</button>
+    </form>
+  </div>
+</mat-card>

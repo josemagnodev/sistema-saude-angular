@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  max-width: 75rem; /* 1200px in rem (1200px / 16px = 75rem) */
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+/* Estilos para os blocos grandes */
+.module-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem; /* Espaçamento entre os módulos */
+}
+
+.module {
+  flex: 1 1 calc(33.33% - 1rem); /* Calcula a largura para 3 módulos por linha */
+  margin-bottom: 1rem; /* Espaçamento inferior */
+  padding: 1.25rem; /* Preenchimento interno */
+  background-color: #f0f0f0;
+  border: 1px solid #ddd; /* Borda */
+  border-radius: 0.5rem; /* Raio da borda */
+  text-align: center;
+  color: #333;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; /* Tamanho da fonte */
+  height: 9rem;
+  /*background-image: url('../../assets/5204f468bd3be21019bba83d5505153f-colecao-de-personagens-medicos.webp');
+  background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o elemento */
+  background-position: center; /* Centraliza a imagem */
+}
+
+.module:hover {
+  background-color: #282a20; /* Cor de fundo ao passar o mouse */
+}
+
+.module h2 {
+  font-size: 2rem; /* Tamanho da fonte do título */
+  margin-bottom: 0.5rem; /* Espaçamento inferior do título */
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4); /* Sombreamento do texto */
+}
+
+/* Ajuste de responsividade */
+@media (max-width: 768px) {
+  .module {
+    flex: 1 1 calc(50% - 1rem); /* 2 módulos por linha em telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .module {
+    flex: 1 1 100%; /* 1 módulo por linha em telas muito pequenas */
+  }
+}

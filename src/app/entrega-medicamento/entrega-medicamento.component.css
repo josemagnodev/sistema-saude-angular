@@ -1,0 +1,85 @@
+.mat-card {
+  max-width: fit-content;
+  margin: 2em auto;
+  padding: 2em;
+  background-color: #007bff; /* cor de fundo azul */
+  color: rgb(250, 33, 33); /* cor do texto */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.profile-container {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.profile-icon {
+  width: 10em;
+  height: 10em;
+  background-image: url('../../assets/istockphoto-1337144146-612x612.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.company-name {
+  font-weight: bold;
+  margin-top: 0.5em;
+  font-size: 2rem;
+  color: white;
+}
+
+.login-text {
+  font-weight: bold;
+  margin-top: 0.5em;
+  font-size: 2.2rem;
+  color: white;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+button {
+  width: 100%;
+}
+
+.title-bar {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.title-text {
+  margin: 0;
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.medicamento-field {
+  display: flex;
+  align-items: center;
+}
+
+.medicamento-field mat-form-field {
+  flex: 1;
+}
+
+.medicamento-field button {
+  margin-left: 0.5em;
+}
+
+.error {
+  color: red;
+  margin-top: 1em;
+}
+
+.success {
+  color: green;
+  margin-top: 1em;
+}

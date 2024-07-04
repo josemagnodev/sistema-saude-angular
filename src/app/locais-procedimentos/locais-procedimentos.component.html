@@ -1,0 +1,46 @@
+<div class="container" *ngIf="fetched">
+  <h2>Lista de Locais de Procedimentos</h2>
+  <div class="locais-container">
+    <div class="local-item" *ngFor="let local of locaisProcedimentos">
+      <strong>{{ local.nome }}</strong><br>
+      {{ local.rua }}<br>
+      {{ local.cep }}<br>
+      {{ local.codigo }}<br>
+      <button mat-raised-button color="primary" (click)="editLocal(local)">Atualizar</button>
+      <button mat-raised-button color="warn" (click)="deleteLocal(local.id)">Deletar</button>
+    </div>
+  </div>
+
+  <button mat-raised-button color="accent" (click)="toggleAddLocalForm()">Adicionar Local de Procedimento</button>
+
+  <div *ngIf="showAddLocalForm" class="form-container">
+    <form [formGroup]="localForm" (ngSubmit)="onAddLocal()">
+      <h2>{{ currentLocalId ? 'Atualizar Local de Procedimento' : 'Adicionar Local de Procedimento' }}</h2>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput id="nome" formControlName="nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Rua</mat-label>
+        <input matInput id="rua" formControlName="rua">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CEP</mat-label>
+        <input matInput id="cep" formControlName="cep">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Código</mat-label>
+        <input matInput id="codigo" formControlName="codigo">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="localForm.invalid">{{ currentLocalId ? 'Atualizar' : 'Adicionar' }}</button>
+    </form>
+  </div>
+</div>
+<div *ngIf="!fetched">
+  <p>Carregando...</p>
+</div>
