@@ -1,26 +1,33 @@
-<div class="container">
-    <h1>PSF Management</h1>
-  
-    <!-- Form to Create/Update PSF -->
-    <form (ngSubmit)="onSubmit()">
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" [(ngModel)]="psf.name" name="name" required>
-      </div>
-      <div>
-        <label for="code">Code</label>
-        <input type="text" id="code" [(ngModel)]="psf.code" name="code" required>
-      </div>
-      <button type="submit">Save</button>
-    </form>
-  
-    <!-- Display PSFs -->
-    <ul>
-      <li *ngFor="let psf of psfs">
-        {{ psf.name }} ({{ psf.code }})
-        <button (click)="editPsf(psf)">Edit</button>
-        <button (click)="deletePsf(psf.id)">Delete</button>
-      </li>
-    </ul>
+<mat-card>
+  <div class="title-bar">
+    <p class="title-text">Gerenciamento de PSF</p>
   </div>
-  
+
+  <button mat-raised-button color="primary" (click)="toggleAddPsfForm()">
+    {{ showAddPsfForm ? 'Cancelar' : 'Adicionar PSF' }}
+  </button>
+
+  <form *ngIf="showAddPsfForm || showUpdatePsfForm" [formGroup]="psfForm" (ngSubmit)="showAddPsfForm ? onAddPsf() : onUpdatePsf()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Código</mat-label>
+      <input matInput type="number" formControlName="code" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      {{ showAddPsfForm ? 'Salvar' : 'Atualizar' }}
+    </button>
+  </form>
+
+  <mat-list>
+    <mat-list-item *ngFor="let psf of psfs">
+      {{ psf.name }} ({{ psf.code }})
+      <button mat-mini-button color="accent" (click)="openUpdatePsfForm(psf)">Editar</button>
+      <button mat-mini-button color="warn" (click)="deletePsf(psf.id)">Deletar</button>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

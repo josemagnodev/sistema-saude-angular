@@ -26,6 +26,7 @@ export class RequerimentosComponent implements OnInit {
   procedimentoId!: number;
   currentRequerimentoId: number | null = null; // Adicionado
   pacientes: { [key: string]: Paciente } = {};
+  pacientesToAdd: Paciente[] = [];
   procedimentos: { [key: number]: Procedimento } = {};
 
   // Mapeamento de status
@@ -119,18 +120,17 @@ export class RequerimentosComponent implements OnInit {
       );
   }
 
-  // getPacientesDetalhes(): void {
-  //   const cpfList = this.requerimentosFrom.map(req => req.cpf_paciente);
-  //   this.http.post<{ [key: string]: Paciente }>('http://localhost:8000/api/paciente-detalhes', { cpfList })
-  //     .subscribe(
-  //       response => {
-  //         this.pacientes = response;
-  //       },
-  //       error => {
-  //         console.error('Error fetching pacientes detalhes:', error);
-  //       }
-  //     );
-  // }
+  getPacientes(): void {
+    this.http.get<Paciente>('http://localhost:8000/api/pacientes')
+      .subscribe(
+        response => {
+          this.pacientesToAdd.push(response);
+        },
+        error => {
+          console.error('Error fetching pacientes detalhes:', error);
+        }
+      );
+  }
 
   // getProcedimentosDetalhes(): void {
   //   const procedimentoList = this.requerimentosFrom.map(req => req.procedimento_codigo);

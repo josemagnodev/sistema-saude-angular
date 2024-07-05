@@ -23,7 +23,7 @@ export class ProcedimentosComponent implements OnInit {
     this.getAllProcedimentos();
     this.procedureForm = this.fb.group({
       nome: ['', Validators.required],
-      tipo_procedimento: ['', Validators.required],
+      tipo_procedimento: [Number, Validators.required],
       codigo: ['', Validators.required]
     });
   }
@@ -55,6 +55,7 @@ export class ProcedimentosComponent implements OnInit {
         .subscribe(
           response => {
             console.log('Procedimento Adicionado!', response);
+            
             this.procedimentos.push(response);
             this.procedureForm.reset();
             this.showAddProcedureForm = false;
@@ -120,7 +121,9 @@ export class ProcedimentosComponent implements OnInit {
       );
   }
 
+  
   getTipoProcedimentoLabel(tipo_procedimento: number): string {
+    // alert(tipo_procedimento);
     switch (tipo_procedimento) {
       case 1:
         return 'Exame';
@@ -132,6 +135,7 @@ export class ProcedimentosComponent implements OnInit {
         return 'Tipo Desconhecido';
     }
   }
+  
   showRequerimentos(procedimentoId: number): void {
     this.router.navigate(['/requerimentos', procedimentoId]);
   }

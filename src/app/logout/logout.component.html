@@ -1,24 +1,31 @@
-<!-- logout.component.html -->
+<mat-card class="logout-card">
+  <div class="title-bar">
+    <p class="title-text">Logout</p>
+  </div>
 
-<button (click)="confirmLogout()">Logout</button>
+  <button mat-raised-button color="primary" class="logout-button" (click)="confirmLogout()">
+    Sair
+  </button>
 
-<!-- Modal de Confirmação -->
-<div class="modal" [ngClass]="{'show': showConfirmation}">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmar Logout</h5>
-        <button type="button" class="close" aria-label="Close" (click)="cancelLogout()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Tem certeza que deseja sair?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="cancelLogout()">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="logout()">Sair</button>
+  <!-- Modal de Confirmação -->
+  <div class="modal" [ngClass]="{'show': showConfirmation}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar Logout</h5>
+          <button type="button" class="close" aria-label="Close" (click)="cancelLogout()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Tem certeza que deseja sair?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cancelLogout()">Cancelar</button>
+          <button type="button" class="btn btn-accent" (click)="logout()">Sair</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+</mat-card>

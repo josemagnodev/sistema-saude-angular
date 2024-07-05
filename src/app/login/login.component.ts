@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         error => {
           this.loading = false;
           console.error('Login error:', error);
-          // Tratar o erro de login aqui
+          alert('Você não é um usuário, registre-se primeiro!');
         }
       );
   }

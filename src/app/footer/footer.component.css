@@ -1,21 +1,15 @@
-
-/* Estilos para o footer */
 .footer {
-    background-color: #f8f9fa;
-    color: #333;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  .footer p {
-    margin: 0;
-  }
-  
-  /* Estilos gerais para o conteúdo */
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
