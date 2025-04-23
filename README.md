@@ -1,27 +1,64 @@
-# FrontDev
+# Sistema de Agendamento de Procedimentos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.2.
+Desenvolvido por **José Magno**
 
-## Development server
+Este repositório contém o **frontend** de um sistema completo de gerenciamento e agendamento de procedimentos médicos, desenvolvido com **Angular** e integrado a uma API RESTful construída em **Laravel**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+> ⚠️ **Atenção**: Por motivos de privacidade e confidencialidade contratual, o código-fonte do **backend (Laravel)** não está incluído neste repositório.
 
-## Code scaffolding
+## 🚀 Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Frontend (Angular)
+- Angular 15+
+- Angular Material
+- TypeScript
+- RxJS
+- SCSS
 
-## Build
+### Backend (Laravel) – *Não incluído neste repositório*
+- Laravel 10+
+- PHP 8+
+- MySQL
+- API RESTful
+- Traits reutilizáveis para respostas padronizadas
+- Testes automatizados com PHPUnit
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 📋 Funcionalidades do Frontend
 
-## Running unit tests
+- Autenticação (login/logout)
+- CRUD de procedimentos, pacientes, farmácias e medicamentos
+- Subformulários integrados (ex: Insegurança Alimentar do Paciente)
+- Agendamento com definição de tipo e urgência
+- Exportação de relatórios em PDF
+- Interface responsiva com Angular Material
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## ⚠️ Status do Projeto
 
-## Running end-to-end tests
+O projeto **não está 100% finalizado no frontend**. Algumas funcionalidades foram implementadas apenas na versão utilizada pelo cliente final e não estão presentes neste repositório público. Mesmo assim, este repositório demonstra claramente minha capacidade de:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Estruturar projetos Angular de forma escalável
+- Integrar com APIs RESTful
+- Trabalhar com formulários dinâmicos e comunicação assíncrona
+- Manter código limpo e bem organizado
 
-## Further help
+## 🧱 Organização do Código
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Componentes reutilizáveis
+- Serviços Angular para comunicação com API
+- Roteamento estruturado
+- Estilização padronizada com SCSS
+
+## ⚙️ Como Executar Localmente
+
+### Pré-requisitos
+- Node.js 18+
+- Angular CLI
+- Backend com API REST configurada (não incluída neste repositório)
+
+### Instalação
+
+```bash
+git clone https://github.com/seu-usuario/sistema-agendamento-procedimentos.git
+cd sistema-agendamento-procedimentos
+npm install
+ng serve
